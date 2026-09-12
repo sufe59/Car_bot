@@ -46,7 +46,7 @@ async function replyToComment(commentId, message) {
 
   return data;
 }
-async function replyToComment(commentId, message) {
+
   const url = `https://graph.facebook.com/v26.0/${commentId}/comments`;
 
   const response = await fetch(url, {
