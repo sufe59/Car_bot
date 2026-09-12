@@ -5,7 +5,8 @@ const app = express();
 app.use(express.json());
 
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN || "carbot123";
-
+const PAGE_ID = process.env.PAGE_ID;
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 // الصفحة الرئيسية
 app.get("/", (req, res) => {
   res.send("Car Bot is running 🚗");
