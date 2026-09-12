@@ -26,7 +26,45 @@ app.get("/webhook", (req, res) => {
   }
 });
 
-// استقبال أحداث Meta
+// Meta
+async function replyToComment(commentId, message) {
+  const url = `https://graph.facebook.com/v26.0/${commentId}/comments`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: message,
+      access_token: PAGE_ACCESS_TOKEN
+    })
+  });
+
+  const data = await response.json();
+  console.log("Comment reply:", data);
+
+  return data;
+}
+async function replyToComment(commentId, message) {
+  const url = `https://graph.facebook.com/v26.0/${commentId}/comments`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: message,
+      access_token: PAGE_ACCESS_TOKEN
+    })
+  });
+
+  const data = await response.json();
+  console.log("Comment reply:", data);
+
+  return data;
+}
 app.post("/webhook", (req, res) => {
   console.log("Webhook event:", JSON.stringify(req.body, null, 2));
   res.sendStatus(200);
